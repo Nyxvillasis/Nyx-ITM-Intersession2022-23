@@ -33,15 +33,17 @@ def relationship_status(from_member, to_member, social_graph):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     if from_member in social_graph[to_member]["following"] and to_member in social_graph[from_member]["following"]:
-        answer = print("friends")
+        answer = "friends"
     elif to_member in social_graph[from_member]["following"]:
-        answer = print("follower") 
+        answer = "follower" 
     elif from_member in social_graph[to_member]["following"]: 
-        answer = print("followed by") 
+        answer = "followed by"
     else:
-        answer = print ("no relationship")
+        answer = "no relationship"
         
-        return answer
+    return answer
+
+import numpy as np
 def tic_tac_toe(board):
     '''Tic Tac Toe. 
     25 points.
@@ -67,11 +69,15 @@ def tic_tac_toe(board):
         for row in board: 
             if len(set(row)) == 1: 
                 return row[0]
-        return 0 
+        for x in range(len(board)):
+            vertical_case = [board[y][x] for y in range(len(board))]
+            if len(set(vertical_case)) == 1:
+                return vertical_case[0]
+        return 0
     def diagonal_cases(board): 
         if len(set([board[x][x] for x in range(len(board))])) == 1: 
             return board[0][0]
-        elif len(set([board[x][len(board)-x-1] for x in range(len(board))])) == 1: 
+        if len(set([board[x][len(board)-x-1] for x in range(len(board))])) == 1: 
             return board[0][len(board)-1]
         else: 
             return "NO WINNER" 
@@ -79,7 +85,8 @@ def tic_tac_toe(board):
         answer = horizontal_vertical_cases(newBoard)
         if answer: 
             return answer
-        return diagonal_cases(board)
+        else:
+            return diagonal_cases(board)
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
@@ -122,6 +129,5 @@ def eta(first_stop, second_stop, route_map):
           middle_flag = 0
         elif(middle_flag == 1 and key[0] != first_stop and key[1] != second_stop):
           travel_time += route_map[key]["time"]
-        print(travel_time)
       
-    return print("Travel time: " + str(travel_time) + " minutes")
+    return int(travel_time)
