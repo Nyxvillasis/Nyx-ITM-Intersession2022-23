@@ -185,8 +185,8 @@ def scytale_cipher(message, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    chars = [c for c in message] 
-    quotient = int(math.ceil(len(chars)/shift)) 
+    chars = [c.upper() for c in message] 
+    quotient = int(math.ceil(len(chars)/int(shift))) 
     raw_message, x, y = [], 1, 1 
 
     while x <= shift:
